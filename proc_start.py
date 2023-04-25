@@ -78,7 +78,6 @@ class ProcStart:
         l_timestampl_short = l_timestampl[:14]
 
         if wa_dataset_procstatus == '' or wa_dataset_procstatus == 'C':
-            #print('ok')
             pass
         elif wa_dataset_procstatus == 'P':
             timecalc = tc.TimeCalcDiff(int(l_timestamp_1st_short), int(l_timestampl_short))
