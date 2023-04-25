@@ -7,7 +7,6 @@ class TimeCalcDiff:
         self.timestamp2 = timestamp2
 
     def calculation(self):
-        #print(self.timestamp1, self.timestamp2)
         if self.timestamp1 < self.timestamp2:
             sign_factor = -1
             lf_timestamp1 = self.timestamp1
