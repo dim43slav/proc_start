@@ -11,7 +11,7 @@ class Connection:
 
     def connect(self):
         self.cur = self.conn.cursor()
-        print('connected')
+        #print('connected')
 
     def query(self, query_string, query_type):
         self.connect()
@@ -25,11 +25,11 @@ class Connection:
         else: 
             self.cur.execute(query_string)
             self.conn.commit()
-            print('query executed succesfully')
+            #print('query executed succesfully')
             self.disconnect()
 
     
     def disconnect(self):
         self.conn.close()
-        print('disconnected')
+        #print('disconnected')
         return 0

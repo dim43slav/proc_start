@@ -33,7 +33,8 @@ class ProcStart:
         if len(wa_dataset) > 0:
             return 21
         else:
-            print(wa_dataset)
+            pass
+            #print(wa_dataset)
 
         query = cn.Connection()
         wa_dataset_dp = query.query(f'''SELECT *
@@ -78,7 +79,8 @@ class ProcStart:
         l_timestampl_short = l_timestampl[:14]
 
         if wa_dataset_procstatus == '' or wa_dataset_procstatus == 'C':
-            print('ok')
+            #print('ok')
+            pass
         elif wa_dataset_procstatus == 'P':
             timecalc = tc.TimeCalcDiff(int(l_timestamp_1st_short), int(l_timestampl_short))
             difference = timecalc.calculation()
@@ -99,7 +101,7 @@ class ProcStart:
                                         scenario = \'{wa_dataset_scenario}\'''', 'S')
         
 
-        print(wa_dataset_dataset, wa_dataset_scenario, wa_dataset_ts)
+        #print(wa_dataset_dataset, wa_dataset_scenario, wa_dataset_ts)
         
         if wa_dataset_procstatus == 'E':
             wa_dataset_ts_timestamp_old = [row[4] for row in wa_dataset_ts][0]
@@ -115,12 +117,14 @@ class ProcStart:
         query.query(f'''UPDATE ddogadkin.zwt_dataset1 
                             SET procuuid = \'{wa_dataset_procuuid}\'
                                 ,procstatus = \'{wa_dataset_procstatus}\'
-                                ,"TIMESTAMP" = \'{wa_dataset_timestamp}\'''', 'U')
+                                ,"TIMESTAMP" = \'{wa_dataset_timestamp}\'
+                            WHERE dataset = \'{self.dataset}\' AND scenario = \'{self.scenario}\'''', 'U')
         
-        print(wa_dataset_ts_timestamp_old, wa_dataset_ts_timestamp)
-        query = cn.Connection()
+        #print(wa_dataset_ts_timestamp_old, wa_dataset_ts_timestamp)
+        query = cn.Connection() 
         query.query(f'''UPDATE ddogadkin.zwt_dataset1_ts 
                             SET "timestamp" = \'{wa_dataset_ts_timestamp}\'
-                                ,timestamp_old = \'{wa_dataset_ts_timestamp_old}\'''', 'U')
+                                ,timestamp_old = \'{wa_dataset_ts_timestamp_old}\'
+                            WHERE dataset = \'{self.dataset}\' AND scenario = \'{self.scenario}\'''', 'U')
         
         #В АПДЕЙТАХ ДОБАВИТЬ WHERE, А ТО ВООБЩЕ ВСЕ АПДЕЙТИТСЯ...
