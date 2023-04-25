@@ -34,7 +34,6 @@ class ProcStart:
             return 21
         else:
             pass
-            #print(wa_dataset)
 
         query = cn.Connection()
         wa_dataset_dp = query.query(f'''SELECT *
@@ -100,9 +99,6 @@ class ProcStart:
                                         dataset = \'{wa_dataset_dataset}\' AND
                                         scenario = \'{wa_dataset_scenario}\'''', 'S')
         
-
-        #print(wa_dataset_dataset, wa_dataset_scenario, wa_dataset_ts)
-        
         if wa_dataset_procstatus == 'E':
             wa_dataset_ts_timestamp_old = [row[4] for row in wa_dataset_ts][0]
             wa_dataset_ts_timestamp = wa_dataset_ts_timestamp_old
@@ -120,7 +116,7 @@ class ProcStart:
                                 ,"TIMESTAMP" = \'{wa_dataset_timestamp}\'
                             WHERE dataset = \'{self.dataset}\' AND scenario = \'{self.scenario}\'''', 'U')
         
-        #print(wa_dataset_ts_timestamp_old, wa_dataset_ts_timestamp)
+
         query = cn.Connection() 
         query.query(f'''UPDATE ddogadkin.zwt_dataset1_ts 
                             SET "timestamp" = \'{wa_dataset_ts_timestamp}\'
