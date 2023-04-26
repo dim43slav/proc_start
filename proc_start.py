@@ -121,5 +121,3 @@ class ProcStart:
                             SET "timestamp" = \'{wa_dataset_ts_timestamp}\'
                                 ,timestamp_old = \'{wa_dataset_ts_timestamp_old}\'
                             WHERE dataset = \'{self.dataset}\' AND scenario = \'{self.scenario}\'''', 'U')
-        
-        #В АПДЕЙТАХ ДОБАВИТЬ WHERE, А ТО ВООБЩЕ ВСЕ АПДЕЙТИТСЯ...
