@@ -1,5 +1,3 @@
-import pandas as pd
-from sqlalchemy import create_engine, inspect
 import connection as cn
 import timecalc as tc
 import math
