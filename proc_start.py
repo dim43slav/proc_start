@@ -5,7 +5,7 @@ import timecalc as tc
 import math
 import datetime
 
-#разобраться с статусами выполненных запросов (может быть через try catch)
+#разобраться с статусами выполненных запросов (может быть через try catch))
 class ProcStart:
     def __init__(self, procuuid: str, scenario: str, dataset: str, continue_error):
         self.procuuid = procuuid
